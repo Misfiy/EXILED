@@ -51,7 +51,7 @@ namespace Exiled.API.Features
         /// <summary>
         /// Gets or sets the items saved for the player.
         /// </summary>
-        public IEnumerable<Item> Items { get; set; }
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Gets or sets the ammo saved for the player.
