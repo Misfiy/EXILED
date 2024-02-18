@@ -28,6 +28,7 @@ namespace Exiled.API.Features
         {
             Role = player.Role;
             Health = player.Health;
+            MaxHealth = player.MaxHealth;
             Position = player.Position;
             Items = player.Items.ToList();
             Ammo = player.Ammo;
@@ -37,6 +38,11 @@ namespace Exiled.API.Features
         /// Gets or sets the role saved for the Player.
         /// </summary>
         public Role Role { get; set; }
+
+        /// <summary>
+        /// Gets or sets the max health saved for the player.
+        /// </summary>
+        public float MaxHealth { get; set; }
 
         /// <summary>
         /// Gets or sets the health saved for the player.
@@ -65,9 +71,9 @@ namespace Exiled.API.Features
         public void Apply(Player player)
         {
             player.Role.Set(Role.Type);
-            player.Role.CopyProperties(Role);
 
             player.Health = Health;
+            player.MaxHealth = MaxHealth;
             player.Position = Position;
             player.AddItem(Items);
             foreach (KeyValuePair<ItemType, ushort> ammo in Ammo)
