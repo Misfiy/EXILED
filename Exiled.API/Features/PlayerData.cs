@@ -65,13 +65,7 @@ namespace Exiled.API.Features
         public void Apply(Player player)
         {
             player.Role.Set(Role.Type);
-
-            if (Role is Scp079Role scp079Role && player.Role is Scp079Role scp079)
-            {
-                scp079.Level = scp079Role.Level;
-                scp079.Experience = scp079Role.Experience;
-                scp079.Energy = scp079Role.Energy;
-            }
+            player.Role.CopyProperties(Role);
 
             player.Health = Health;
             player.Position = Position;
