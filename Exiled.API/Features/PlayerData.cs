@@ -10,7 +10,7 @@ namespace Exiled.API.Features
     using System.Collections.Generic;
     using System.Linq;
 
-    using Exiled.API.Enums;
+    using Exiled.API.Extensions;
     using Exiled.API.Features.Items;
     using Exiled.API.Features.Roles;
     using UnityEngine;
@@ -57,5 +57,27 @@ namespace Exiled.API.Features
         /// Gets or sets the ammo saved for the player.
         /// </summary>
         public Dictionary<ItemType, ushort> Ammo { get; set; }
+
+        /// <summary>
+        /// Applies the Data to a player.
+        /// </summary>
+        /// <param name="player">The player to apply the data to.</param>
+        public void Apply(Player player)
+        {
+            player.Role.Set(Role.Type);
+
+            if (Role is Scp079Role scp079Role && player.Role is Scp079Role scp079)
+            {
+                scp079.Level = scp079Role.Level;
+                scp079.Experience = scp079Role.Experience;
+                scp079.Energy = scp079Role.Energy;
+            }
+
+            player.Health = Health;
+            player.Position = Position;
+            player.AddItem(Items);
+            foreach (KeyValuePair<ItemType, ushort> ammo in Ammo)
+                player.AddAmmo(ammo.Key.GetAmmoType(), ammo.Value);
+        }
     }
 }
