@@ -595,6 +595,15 @@ namespace Exiled.API.Features
         }
 
         /// <summary>
+        /// Gets or sets the Player's SCP Tickets.
+        /// </summary>
+        public int ScpTickets
+        {
+            get => new ScpTicketsLoader().GetTickets(ReferenceHub, ScpPlayerPicker.DefaultTickets);
+            set => new ScpTicketsLoader().ModifyTickets(ReferenceHub, value);
+        }
+
+        /// <summary>
         /// Gets a value indicating whether or not the player is cuffed.
         /// </summary>
         /// <remarks>Players can be cuffed without another player being the cuffer.</remarks>
