@@ -94,6 +94,7 @@ namespace Exiled.API.Features
         private ReferenceHub referenceHub;
         private CustomHealthStat healthStat;
         private Role role;
+        private int scpTickets;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Player"/> class.
@@ -599,8 +600,8 @@ namespace Exiled.API.Features
         /// </summary>
         public int ScpTickets
         {
-            get => new ScpTicketsLoader().GetTickets(ReferenceHub, ScpPlayerPicker.DefaultTickets);
-            set => new ScpTicketsLoader().ModifyTickets(ReferenceHub, value);
+            get => scpTickets;
+            set => scpTickets = value;
         }
 
         /// <summary>
