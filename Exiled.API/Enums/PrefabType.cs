@@ -15,7 +15,7 @@ namespace Exiled.API.Enums
     public enum PrefabType
     {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-#pragma warning disable SA1602
+#pragma warning disable SA1602 // Enumeration items should be documented
         [Prefab(1883254029, "Player")]
         Player,
 
